@@ -1,4 +1,7 @@
-# ----- Caeser Cipher v01 ----- #
+# ----- Caeser Cipher v02 ----- #
+
+
+LIBRARY = '?aZbY1cXdW2eVfU3gTh4SiRj5QkPl6OmNn7MoLp8KqJ9rIs0HtG uFvE,wDxC.yBzA!'
 
 def encrypt(plaintext: str, key: int) -> str:
     '''
@@ -9,9 +12,9 @@ def encrypt(plaintext: str, key: int) -> str:
     ciphertext = ''    
     
     for ch in plaintext: 
-        if ch.isalpha():
-            num = ord(ch.lower())
-            ciphertext += chr((num - 97 + key) % 26 + 97)
+        index = LIBRARY.find(ch)
+        if index != -1:
+            ciphertext += LIBRARY[(index + key) % len(LIBRARY)]
         else:
             ciphertext += ch
     
